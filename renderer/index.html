@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' data: https://fonts.gstatic.com;" />
+  <title>Hello C — PDF Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/ai.css" />
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <img src="images/icon.png" alt="Hello C" class="brand-logo" title="Hello C" />
+        <span class="brand-name">Hello C</span>
+        <button type="button" class="sidebar-toggle" id="btn-sidebar-toggle" title="Collapse sidebar">
+          <span data-icon="panelLeft" data-icon-size="18"></span>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-action="home" data-nav="home" title="Home">
+          <span class="nav-icon" data-icon="home" data-icon-size="18"></span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-action="open" data-nav="viewer" title="Open PDF">
+          <span class="nav-icon" data-icon="fileText" data-icon-size="18"></span>
+          <span class="nav-label">Open PDF</span>
+        </button>
+        <button class="nav-item" data-action="merge" data-nav="merge" title="Merge PDFs">
+          <span class="nav-icon" data-icon="files" data-icon-size="18"></span>
+          <span class="nav-label">Merge PDFs</span>
+        </button>
+        <button class="nav-item" data-action="convert" data-nav="convert" title="Convert Files">
+          <span class="nav-icon" data-icon="refreshCw" data-icon-size="18"></span>
+          <span class="nav-label">Convert Files</span>
+        </button>
+        <button class="nav-item" data-action="ai" data-nav="ai" title="Ask Chenny">
+          <span class="nav-icon" data-icon="sparkles" data-icon-size="18"></span>
+          <span class="nav-label">Ask Chenny</span>
+        </button>
+        <button class="nav-item" data-action="tools" data-nav="tools" title="Compress & Resize">
+          <span class="nav-icon" data-icon="shrink" data-icon-size="18"></span>
+          <span class="nav-label">Compress & Resize</span>
+        </button>
+        <button class="nav-item" data-action="fileops" data-nav="fileops" title="File Operations">
+          <span class="nav-icon" data-icon="scissors" data-icon-size="18"></span>
+          <span class="nav-label">File Operations</span>
+        </button>
+        <button class="nav-item" data-action="pages" data-nav="pages" title="Manage Pages">
+          <span class="nav-icon" data-icon="layers" data-icon-size="18"></span>
+          <span class="nav-label">Manage Pages</span>
+        </button>
+        <button class="nav-item" data-action="sign" data-nav="sign" title="E-Sign PDF">
+          <span class="nav-icon" data-icon="penLine" data-icon-size="18"></span>
+          <span class="nav-label">E-Sign PDF</span>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <button class="nav-item" data-action="read" data-nav="read" title="Read Aloud">
+          <span class="nav-icon" data-icon="volume2" data-icon-size="18"></span>
+          <span class="nav-label">Read Aloud</span>
+        </button>
+        <button class="nav-item" data-action="save-audio" data-nav="audio" title="Save Audio">
+          <span class="nav-icon" data-icon="download" data-icon-size="18"></span>
+          <span class="nav-label">Save Audio</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="nav-item settings-btn" data-action="settings" data-nav="settings" type="button" title="Settings">
+          <span class="nav-icon" data-icon="settings" data-icon-size="18"></span>
+          <span class="nav-label">Settings</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-search-wrap">
+          <div class="topbar-search">
+            <span class="search-icon" data-icon="search" data-icon-size="18"></span>
+            <input type="text" id="top-search" placeholder="Search recent files…" />
+          </div>
+        </div>
+      </header>
+
+      <!-- Home grid -->
+      <div id="view-home" class="content-card home-card animate-in">
+        <div class="home-header">
+          <h1 id="greeting" class="greeting">Welcome back</h1>
+          <p id="doc-subtitle" class="greeting-sub">Choose a tool from Home or open a PDF</p>
+        </div>
+        <h2 class="home-section-title">Quick Actions</h2>
+        <div id="home-grid" class="home-grid"></div>
+        <div class="home-recent">
+          <div class="recent-header">
+            <h2 class="home-section-title">Recent</h2>
+            <div id="recent-toolbar" class="recent-toolbar">
+              <button type="button" class="recent-tool-btn" data-view="list" title="List view">
+                <span data-icon="list" data-icon-size="16"></span>
+              </button>
+              <button type="button" class="recent-tool-btn" data-view="grid" title="Grid view">
+                <span data-icon="layoutGrid" data-icon-size="16"></span>
+              </button>
+              <span class="recent-toolbar-sep"></span>
+              <button type="button" class="recent-tool-btn" id="btn-recent-select" title="Select to remove">Select</button>
+              <button type="button" class="recent-tool-btn danger" id="btn-recent-clear-sel" title="Remove selected">Remove</button>
+              <button type="button" class="recent-tool-btn danger" id="btn-recent-clear-all" title="Clear all">Clear all</button>
+            </div>
+          </div>
+          <div id="recent-list" class="recent-list"></div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div id="view-settings" class="content-card settings-view hidden"></div>
+
+      <!-- AI Assistant -->
+      <div id="view-ai" class="content-card ai-view hidden"></div>
+
+      <!-- Document viewer -->
+      <div id="view-document" class="content-card hidden">
+        <p id="tts-sentence" class="tts-sentence hidden"></p>
+        <div class="doc-toolbar" id="doc-toolbar">
+          <div class="doc-toolbar-title">
+            <h2 id="doc-title" class="doc-title">Document</h2>
+            <p id="doc-meta" class="doc-meta"></p>
+          </div>
+          <div class="doc-toolbar-right">
+            <div class="page-jump">
+              <input type="text" id="page-input" value="1" />
+              <span>/ <span id="page-total">0</span></span>
+            </div>
+            <div class="toolbar-sep"></div>
+            <button class="tool-icon-btn" id="btn-zoom-out" title="Zoom out">
+              <span data-icon="zoomOut" data-icon-size="16"></span>
+            </button>
+            <span id="zoom-label" class="zoom-label">100%</span>
+            <button class="tool-icon-btn" id="btn-zoom-in" title="Zoom in">
+              <span data-icon="zoomIn" data-icon-size="16"></span>
+            </button>
+            <div class="toolbar-sep"></div>
+            <button class="tool-icon-btn" id="btn-sign-mode" title="E-Sign PDF">
+              <span data-icon="penLine" data-icon-size="16"></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="search-bar" class="search-bar hidden">
+          <span data-icon="search" data-icon-size="16"></span>
+          <input type="text" id="search-input" placeholder="Find in document…" />
+          <span id="search-count" class="search-count">0 / 0</span>
+          <button class="tool-icon-btn sm" id="search-prev" title="Previous">
+            <span data-icon="chevronUp" data-icon-size="14"></span>
+          </button>
+          <button class="tool-icon-btn sm" id="search-next" title="Next">
+            <span data-icon="chevronDown" data-icon-size="14"></span>
+          </button>
+          <button class="tool-icon-btn sm" id="search-close" title="Close">
+            <span data-icon="x" data-icon-size="14"></span>
+          </button>
+        </div>
+
+        <div id="sign-bar" class="sign-bar hidden">
+          <span class="sign-bar-label" id="sign-bar-label">Place signature</span>
+          <button class="btn-ghost sm" id="btn-add-signature" type="button">Add Another</button>
+          <button class="btn-primary sm" id="btn-save-signed" type="button">Save Signed PDF</button>
+          <button class="btn-ghost sm" id="btn-cancel-sign" type="button">Cancel</button>
+        </div>
+
+        <div class="viewer-wrap" id="viewer-wrap">
+          <div id="drop-zone" class="drop-zone hidden">
+            <div class="drop-inner animate-float">
+              <div class="upload-box">
+                <span class="upload-icon" data-icon="upload" data-icon-size="28"></span>
+                <p class="upload-label">Upload your PDF</p>
+                <p class="upload-hint">Drag & drop here, or click to browse</p>
+              </div>
+              <button class="btn-primary" id="drop-open-btn" type="button">
+                <span data-icon="fileText" data-icon-size="16"></span>
+                Choose File
+              </button>
+            </div>
+          </div>
+          <div id="viewer" class="viewer hidden"></div>
+        </div>
+      </div>
+
+      <footer class="status-bar">
+        <span id="status-text">Ready</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Progress popup -->
+  <div id="progress-popup" class="progress-popup hidden">
+    <div class="progress-popup-card animate-modal">
+      <div class="progress-popup-spinner"></div>
+      <h3 id="progress-title">Processing…</h3>
+      <div class="progress-track lg"><div id="progress-fill" class="progress-fill"></div></div>
+      <p id="progress-msg" class="progress-msg">Please wait…</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal animate-modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Dialog</h3>
+        <button class="tool-icon-btn sm" id="modal-close" type="button">
+          <span data-icon="x" data-icon-size="16"></span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer">
+        <button class="btn-ghost" id="modal-cancel" type="button">Cancel</button>
+        <button class="btn-primary" id="modal-confirm" type="button">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-wrap" class="toast-wrap hidden">
+    <div id="toast" class="toast info">
+      <span id="toast-icon" class="toast-icon" aria-hidden="true"></span>
+      <span id="toast-text" class="toast-text"></span>
+    </div>
+  </div>
+
+  <button id="fab-read" class="fab-read hidden" type="button" title="Read aloud">
+    <span data-icon="volume2" data-icon-size="22"></span>
+  </button>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

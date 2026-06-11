@@ -1,0 +1,15 @@
+pymupdf
+pypdf
+Pillow
+pyttsx3
+pdf2docx
+python-docx
+openpyxl
+python-pptx
+mammoth
+
+# OCR also requires Tesseract OCR installed on your system:
+# https://github.com/tesseract-ocr/tesseract
+
+# Office conversion: LibreOffice (recommended) or on Windows for .docx only:
+# pip install docx2pdf  (requires Microsoft Word)

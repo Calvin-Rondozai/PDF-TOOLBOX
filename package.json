@@ -1,0 +1,23 @@
+{
+  "name": "hello-c-pdf-tool",
+  "version": "1.0.0",
+  "description": "Hello C — Professional PDF Reader (Electron)",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test:python": "python python/test_engine.py",
+    "test": "npm run test:python"
+  },
+  "author": "Calvin",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.0.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "groq-sdk": "^1.2.1",
+    "marked": "^18.0.5",
+    "pdf-lib": "^1.17.1",
+    "signature_pad": "^5.1.3"
+  }
+}
