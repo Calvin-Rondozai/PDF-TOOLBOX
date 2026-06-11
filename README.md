@@ -1,2 +1,59 @@
-# PDF-TOOLBOX
- is a free, no-signup desktop PDF toolbox built with Electron. It covers everything you'd expect from a premium PDF suite  merge, split, compress, convert, watermark, and more plus an AI assistant powered by Groq that lets you chat with your documents. On top of that, any PDF can be exported to audio.
+# Hello C — PDF Tool (Electron)
+
+Modern desktop PDF reader and toolkit built with **Electron** + **Python (PyMuPDF)**.
+
+## Features
+
+- **Viewer** — continuous scroll, zoom, page navigation, drag & drop
+- **Search** — find text across pages
+- **Merge** — combine multiple PDFs
+- **PDF Tools** — compress (target size / standard), resize pages
+- **File Ops** — split, extract range, rotate, watermark, password protect
+- **Audio** — read aloud (browser TTS), export audio (Python pyttsx3)
+
+## Setup (one-time)
+
+### 1. Python backend
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Electron app
+
+```bash
+npm install
+```
+
+## Run
+
+```bash
+npm start
+```
+
+Or use the original PyQt app:
+
+```bash
+python app.py
+```
+
+## Test PDF operations
+
+```bash
+npm run test:python
+```
+
+## Project structure
+
+```
+PDF Tool/
+├── app.py              # Original PyQt6 app
+├── electron/           # Electron main + preload
+├── renderer/           # Modern UI (HTML/CSS/JS)
+├── python/
+│   ├── pdf_engine.py   # Shared PDF backend
+│   ├── pdf_cli.py      # CLI for Electron IPC
+│   └── test_engine.py  # Integration tests
+├── package.json
+└── requirements.txt
+```
