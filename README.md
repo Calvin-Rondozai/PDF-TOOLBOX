@@ -1,6 +1,7 @@
-# Hello C — PDF Tool (Electron)
+# Hello C
 
 Modern desktop PDF reader and toolkit built with **Electron** + **Python (PyMuPDF)**.
+<img width="1583" height="1023" alt="image" src="https://github.com/user-attachments/assets/50ca33b2-3b60-4c9c-b099-37f5be3456fa" />
 
 ## Features
 
@@ -56,4 +57,7 @@ PDF Tool/
 │   └── test_engine.py  # Integration tests
 ├── package.json
 └── requirements.txt
+
+
+
 ```
