@@ -1,7 +1,8 @@
 # Hello C
 
 Modern desktop PDF reader and toolkit built with **Electron** + **Python (PyMuPDF)**.
-<img width="1583" height="1023" alt="image" src="https://github.com/user-attachments/assets/50ca33b2-3b60-4c9c-b099-37f5be3456fa" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4c0538e1-7071-4e5e-8e44-5323e5beffec" />
+
 
 ## Features
 
